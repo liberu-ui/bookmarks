@@ -18,7 +18,7 @@
                     <span class="control"
                         v-for="bookmark in bookmarks"
                         v-bind="bookmarkBindings(bookmark)"
-                        :key="JSON.strigify(bookmark)">
+                        :key="JSON.stringify(bookmark)">
                         <span class="tags has-addons">
                             <a :class="['tag is-bold', {'is-link': matches($route, bookmark)}]"
                                 v-on="bookmarkEvents(bookmark)">
