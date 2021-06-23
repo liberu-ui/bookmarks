@@ -6,7 +6,7 @@
             }">
             <div class="bookmarks">
                 <span class="control">
-                    <a class="tag is-warning icon has-margin-right-small"
+                    <a class="tag is-warning icon mr-1"
                         v-on="clearBindings"
                         v-if="hasClear">
                         <fa icon="trash-alt"/>
@@ -17,7 +17,8 @@
                     v-on="reorderEvents">
                     <span class="control"
                         v-for="bookmark in bookmarks"
-                        v-bind="bookmarkBindings(bookmark)">
+                        v-bind="bookmarkBindings(bookmark)"
+                        :key="JSON.strigify(bookmark)">
                         <span class="tags has-addons">
                             <a :class="['tag is-bold', {'is-link': matches($route, bookmark)}]"
                                 v-on="bookmarkEvents(bookmark)">
