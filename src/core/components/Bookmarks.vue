@@ -4,7 +4,7 @@ import { mapState, mapGetters, mapMutations } from 'vuex';
 export default {
     name: 'Bookmarks',
 
-    inject: ['routeErrorHandler'],
+    inject: ['routerErrorHandler'],
 
     props: {
         excluded: {
@@ -54,7 +54,7 @@ export default {
             this.splice(bookmark);
             const { name, params, query } = this.bookmarks[this.bookmarks.length - 1];
             this.$router.push({ name, params, query })
-                .catch(this.routeErrorHandler);
+                .catch(this.routerErrorHandler);
         },
         item(index) {
             const items = this.container.querySelectorAll('.control');
@@ -119,7 +119,7 @@ export default {
             }),
             bookmarkEvents: bookmark => ({
                 click: () => this.$router.push(bookmark)
-                    .catch(this.routeErrorHandler),
+                    .catch(this.routerErrorHandler),
             }),
             clearBindings: {
                 click: () => this.clear(this.$route),
