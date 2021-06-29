@@ -4,6 +4,8 @@ import { mapState, mapGetters, mapMutations } from 'vuex';
 export default {
     name: 'Bookmarks',
 
+    inject: ['routeErrorHandler'],
+
     props: {
         excluded: {
             type: Array,
@@ -50,11 +52,9 @@ export default {
         },
         remove(bookmark) {
             this.splice(bookmark);
-
-            if (bookmark.name === this.$route.name) {
-                const { name, params, query } = this.bookmarks[this.bookmarks.length - 1];
-                this.$router.push({ name, params, query });
-            }
+            const { name, params, query } = this.bookmarks[this.bookmarks.length - 1];
+            this.$router.push({ name, params, query })
+                .catch(this.routeErrorHandler);
         },
         item(index) {
             const items = this.container.querySelectorAll('.control');
@@ -118,11 +118,8 @@ export default {
                 click: () => this.remove(bookmark),
             }),
             bookmarkEvents: bookmark => ({
-                click: () => {
-                    if (!this.matches(this.$route, bookmark)) {
-                        this.$router.push(bookmark);
-                    }
-                },
+                click: () => this.$router.push(bookmark)
+                    .catch(this.routeErrorHandler);
             }),
             clearBindings: {
                 click: () => this.clear(this.$route),
