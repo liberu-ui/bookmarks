@@ -119,7 +119,7 @@ export default {
             }),
             bookmarkEvents: bookmark => ({
                 click: () => this.$router.push(bookmark)
-                    .catch(this.routeErrorHandler);
+                    .catch(this.routeErrorHandler),
             }),
             clearBindings: {
                 click: () => this.clear(this.$route),
