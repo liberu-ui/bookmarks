@@ -1,6 +1,6 @@
 <template>
     <core-bookmarks>
-        <template v-slot:default="{
+        <template #:default="{
                 bookmarks, hasClear, matches, isExcluded, stickBindings, bookmarkBindings,
                 removeBindings, bookmarkEvents, reorderBindings, reorderEvents, clearBindings,
             }">
