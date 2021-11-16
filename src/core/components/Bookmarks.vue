@@ -27,8 +27,9 @@ export default {
     },
 
     watch: {
-        $route(route) {
-            this.add(route);
+        $route: {
+            handler: 'add',
+            deep: true,
         },
     },
 
