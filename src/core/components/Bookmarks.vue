@@ -102,7 +102,7 @@ export default {
     },
 
     render() {
-        return this.$scopedSlots.default({
+        return this.$slots.default({
             bookmarks: this.bookmarks,
             hasClear: this.stickies.length,
             matches: this.matches,

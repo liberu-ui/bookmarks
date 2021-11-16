@@ -1,6 +1,6 @@
 <template>
     <core-bookmark-state>
-        <template #:default="{ bindings, events }">
+        <template #default="{ bindings, events }">
             <div class="level is-mobile settings">
                 <div class="level-left">
                     <div class="level-item">
