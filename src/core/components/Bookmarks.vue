@@ -126,10 +126,11 @@ export default {
                 click: () => this.clear(this.$route),
             },
             reorderBindings: {
-                value: this.bookmarks,
+                modelValue: this.bookmarks,
+                itemKey: JSON.stringify
             },
             reorderEvents: {
-                input: bookmarks => (this.set(bookmarks)),
+                input: this.set,
             },
         });
     },
