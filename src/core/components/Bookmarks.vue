@@ -1,4 +1,5 @@
 <script>
+import Vue from 'vue';
 import { mapState, mapGetters, mapMutations } from 'vuex';
 
 export default {
@@ -16,13 +17,16 @@ export default {
     data: () => ({
         scrollInterval: null,
         scrollStep: 5,
+        ref: 'items',
     }),
 
     computed: {
         ...mapState('bookmarks', ['bookmarks']),
         ...mapGetters('bookmarks', ['isExcluded', 'matches', 'stickies', 'index']),
         container() {
-            return this.$el.querySelector('.bookmark-items');
+            return !!this.$parent.$refs[this.ref]._uid
+                ? this.$parent.$refs[this.ref].$el
+                : this.$parent.$refs[this.ref];
         },
     },
 
@@ -36,6 +40,9 @@ export default {
     created() {
         this.init();
         this.exclude(this.excluded);
+    },
+
+    mounted() {
         this.add(this.$route);
     },
 
@@ -44,7 +51,7 @@ export default {
         ...mapMutations('bookmarks', { splice: 'remove' }),
         add(bookmark) {
             this.push(bookmark);
-            this.$nextTick(this.focus);
+            setTimeout(this.focus, 1000);
         },
         uniqueId(bookmark) {
             const { name, params, query } = bookmark;
@@ -58,7 +65,7 @@ export default {
                 .catch(this.routerErrorHandler);
         },
         item(index) {
-            const items = this.container.querySelectorAll('.control');
+            const items = this.container.children;
             return items[index];
         },
         focus() {
@@ -127,7 +134,8 @@ export default {
             },
             reorderBindings: {
                 modelValue: this.bookmarks,
-                itemKey: JSON.stringify
+                itemKey: JSON.stringify,
+                ref: this.ref,
             },
             reorderEvents: {
                 input: this.set,

@@ -1,8 +1,9 @@
 <template>
     <core-bookmarks>
         <template #default="{
-                bookmarks, hasClear, matches, isExcluded, stickBindings, bookmarkBindings,
-                removeBindings, bookmarkEvents, reorderBindings, reorderEvents, clearBindings,
+                bookmarks, hasClear, matches, isExcluded, stickBindings,
+                bookmarkBindings, removeBindings, bookmarkEvents,
+                reorderBindings, reorderEvents, clearBindings,
             }">
             <div class="bookmarks">
                 <span class="control">
@@ -45,6 +46,7 @@
                     </template>
                 </draggable>
             </div>
+            <div class="test"></div>
         </template>
     </core-bookmarks>
 </template>
