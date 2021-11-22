@@ -1,54 +1,55 @@
 <template>
-    <core-bookmarks>
-        <template #default="{
-                bookmarks, hasClear, matches, isExcluded, stickBindings,
-                bookmarkBindings, removeBindings, bookmarkEvents,
-                reorderBindings, reorderEvents, clearBindings,
-            }">
-            <div class="bookmarks">
-                <span class="control">
-                    <a class="tag is-warning icon mr-1"
-                        v-on="clearBindings"
-                        v-if="hasClear">
-                        <fa icon="trash-alt"/>
-                    </a>
-                </span>
-                <draggable class="field is-grouped bookmark-items no-scrollbars"
-                    v-bind="reorderBindings"
-                    v-on="reorderEvents">
-                    <template #item="{ element }">
-                        <span class="control"
-                            v-bind="bookmarkBindings(element)">
-                            <span class="tags has-addons">
-                                <a :class="['tag is-bold', {'is-link': matches($route, element)}]"
-                                    v-on="bookmarkEvents(element)">
-                                    <span>
-                                        {{ i18n(element.meta.title) }}
-                                    </span>
-                                    <span class="icon is-small has-text-danger"
-                                        v-if="element.state">
-                                        <fa icon="circle"
-                                            size="xs"/>
-                                    </span>
-                                </a>
-                                <a class="tag is-success check"
-                                    v-on="stickBindings(element)"
-                                    v-if="!element.sticky && !isExcluded(element)">
-                                    <span class="icon is-small">
-                                        <fa icon="check"/>
-                                    </span>
-                                </a>
-                                <a class="tag is-delete"
-                                    v-on="removeBindings(element)"
-                                    v-if="bookmarks.length > 1 && !isExcluded(element)"/>
+    <div class="bookmarks"
+      v-bind="$attrs">
+        <core-bookmarks>
+            <template #default="{
+                    bookmarks, hasClear, matches, isExcluded, stickBindings,
+                    bookmarkBindings, removeBindings, bookmarkEvents,
+                    reorderBindings, reorderEvents, clearBindings,
+                }">
+                    <span class="control">
+                        <a class="tag is-warning icon mr-1"
+                            v-on="clearBindings"
+                            v-if="hasClear">
+                            <fa icon="trash-alt"/>
+                        </a>
+                    </span>
+                    <draggable class="field is-grouped bookmark-items no-scrollbars"
+                        v-bind="reorderBindings"
+                        v-on="reorderEvents">
+                        <template #item="{ element }">
+                            <span class="control"
+                                v-bind="bookmarkBindings(element)">
+                                <span class="tags has-addons">
+                                    <a :class="['tag is-bold', {'is-link': matches($route, element)}]"
+                                        v-on="bookmarkEvents(element)">
+                                        <span>
+                                            {{ i18n(element.meta.title) }}
+                                        </span>
+                                        <span class="icon is-small has-text-danger"
+                                            v-if="element.state">
+                                            <fa icon="circle"
+                                                size="xs"/>
+                                        </span>
+                                    </a>
+                                    <a class="tag is-success check"
+                                        v-on="stickBindings(element)"
+                                        v-if="!element.sticky && !isExcluded(element)">
+                                        <span class="icon is-small">
+                                            <fa icon="check"/>
+                                        </span>
+                                    </a>
+                                    <a class="tag is-delete"
+                                        v-on="removeBindings(element)"
+                                        v-if="bookmarks.length > 1 && !isExcluded(element)"/>
+                                </span>
                             </span>
-                        </span>
-                    </template>
-                </draggable>
-            </div>
-            <div class="test"></div>
-        </template>
-    </core-bookmarks>
+                        </template>
+                    </draggable>
+                <div class="test"></div>
+            </template>
+        </core-bookmarks>
+    </div>
 </template>
 
 <script>
@@ -127,6 +128,7 @@ export default {
             position: relative;
             overflow-x: auto;
             overflow-y: hidden;
+            margin-bottom: 0;
 
             .control:not(:last-child) {
                 [dir='ltr'] & {
