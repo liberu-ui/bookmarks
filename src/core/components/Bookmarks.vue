@@ -23,9 +23,7 @@ export default {
         ...mapState('bookmarks', ['bookmarks']),
         ...mapGetters('bookmarks', ['isExcluded', 'matches', 'stickies', 'index']),
         container() {
-            return !!this.$parent.$refs[this.ref]._uid
-                ? this.$parent.$refs[this.ref].$el
-                : this.$parent.$refs[this.ref];
+            return this.$parent.$refs[this.ref].$el;
         },
     },
 
