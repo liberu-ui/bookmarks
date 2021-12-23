@@ -5,7 +5,6 @@ import {
 export const state = {
     bookmarks: [],
     excluded: ['notFound', 'unauthorized'],
-    editable: false,
 };
 
 export const getters = {
