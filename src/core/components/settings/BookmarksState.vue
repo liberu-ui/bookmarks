@@ -23,12 +23,12 @@ export default {
     },
 
     render() {
-        return this.$scopedSlots.default({
+        return this.$slots.default({
             bindings: {
-                value: this.bookmarks,
+                modelValue: this.bookmarks,
             },
             events: {
-                input: state => this.update(state),
+                'update:modelValue': state => this.update(state),
             },
         });
     },

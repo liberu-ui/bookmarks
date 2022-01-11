@@ -16,25 +16,30 @@ export default {
     data: () => ({
         scrollInterval: null,
         scrollStep: 5,
+        ref: 'items',
     }),
 
     computed: {
         ...mapState('bookmarks', ['bookmarks']),
         ...mapGetters('bookmarks', ['isExcluded', 'matches', 'stickies', 'index']),
         container() {
-            return this.$el.querySelector('.bookmark-items');
+            return this.$parent.$refs[this.ref].$el;
         },
     },
 
     watch: {
-        $route(route) {
-            this.add(route);
+        $route: {
+            handler: 'add',
+            deep: true,
         },
     },
 
     created() {
         this.init();
         this.exclude(this.excluded);
+    },
+
+    mounted() {
         this.add(this.$route);
     },
 
@@ -43,7 +48,7 @@ export default {
         ...mapMutations('bookmarks', { splice: 'remove' }),
         add(bookmark) {
             this.push(bookmark);
-            this.$nextTick(this.focus);
+            setTimeout(this.focus, 1000);
         },
         uniqueId(bookmark) {
             const { name, params, query } = bookmark;
@@ -57,7 +62,7 @@ export default {
                 .catch(this.routerErrorHandler);
         },
         item(index) {
-            const items = this.container.querySelectorAll('.control');
+            const items = this.container.children;
             return items[index];
         },
         focus() {
@@ -102,7 +107,7 @@ export default {
     },
 
     render() {
-        return this.$scopedSlots.default({
+        return this.$slots.default({
             bookmarks: this.bookmarks,
             hasClear: this.stickies.length,
             matches: this.matches,
@@ -125,10 +130,12 @@ export default {
                 click: () => this.clear(this.$route),
             },
             reorderBindings: {
-                value: this.bookmarks,
+                modelValue: this.bookmarks,
+                itemKey: JSON.stringify,
+                ref: this.ref,
             },
             reorderEvents: {
-                input: bookmarks => (this.set(bookmarks)),
+                input: this.set,
             },
         });
     },
