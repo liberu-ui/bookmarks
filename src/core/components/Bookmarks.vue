@@ -122,8 +122,8 @@ export default {
             removeBindings: bookmark => ({
                 click: () => this.remove(bookmark),
             }),
-            bookmarkEvents: bookmark => ({
-                click: () => this.$router.push(bookmark)
+            bookmarkEvents: ({ name, params, query }) => ({
+                click: () => this.$router.push({ name, params, query })
                     .catch(this.routerErrorHandler),
             }),
             clearBindings: {
@@ -135,7 +135,7 @@ export default {
                 ref: this.ref,
             },
             reorderEvents: {
-                input: this.set,
+                'update:modelValue': this.set,
             },
         });
     },
