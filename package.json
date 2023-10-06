@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/enso-ui/bookmarks.git"
+    "url": "git+https://github.com/liberu-ui/bookmarks.git"
   },
   "keywords": [
     "bookmarks",
@@ -17,9 +17,9 @@
   "author": "Adrian Ocneanu <aocneanu@gmail.com>",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/enso-ui/bookmarks/issues"
+    "url": "https://github.com/liberu-ui/bookmarks/issues"
   },
-  "homepage": "https://github.com/enso-ui/bookmarks#readme",
+  "homepage": "https://github.com/liberu-ui/bookmarks#readme",
   "dependencies": {
     "@liberu-ui/switch": "^2.0",
     "@liberu-ui/themes": "^3.0",

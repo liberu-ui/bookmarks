@@ -1,10 +1,10 @@
 # bookmarks
 
-![npm license](https://img.shields.io/npm/l/@enso-ui/bookmarks.svg) 
-![npm download](https://img.shields.io/npm/dm/@enso-ui/bookmarks.svg) 
-![GitHub top language](https://img.shields.io/github/languages/top/enso-ui/bookmarks.svg) 
-![GitHub issues](https://img.shields.io/github/issues/enso-ui/bookmarks.svg) 
-![npm version](https://img.shields.io/npm/v/@enso-ui/bookmarks.svg) 
+![npm license](https://img.shields.io/npm/l/@liberu-ui/bookmarks.svg) 
+![npm download](https://img.shields.io/npm/dm/@liberu-ui/bookmarks.svg) 
+![GitHub top language](https://img.shields.io/github/languages/top/liberu-ui/bookmarks.svg) 
+![GitHub issues](https://img.shields.io/github/issues/liberu-ui/bookmarks.svg) 
+![npm version](https://img.shields.io/npm/v/@liberu-ui/bookmarks.svg) 
 
 ## Usage
 The component cannot be used outside of the Liberu ecosystem.

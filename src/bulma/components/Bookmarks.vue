@@ -69,7 +69,7 @@ export default {
 </script>
 
 <style lang="scss">
-    @import '@enso-ui/themes/bulma/variables';
+    @import '@liberu-ui/themes/bulma/variables';
 
     .bookmarks {
         position: fixed;
